@@ -4,8 +4,18 @@ spring:
       uri: mongodb://localhost:27017/webflux
 
 
+  cache:
+    type: caffeine
+    caffeine:
+      spec: initialCapacity=600, expireAfterWrite=1000s
+
+
   redis:
     host: 127.0.0.1
     port: 6379
-
+    jedis:
+      pool:
+        max-active: 16
+        max-wait: 3000
+    timeout: 3000
 
